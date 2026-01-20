@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InsightAI – Analytics Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+    body{scroll-behavior:smooth;background:#020617;color:#fff;display:flex;min-height:100vh}
+
+    /* Sidebar */
+    .sidebar{
+      width:240px;
+      background:#020617;
+      border-right:1px solid #1e293b;
+      padding:28px 20px
+    }
+    .logo{font-size:22px;font-weight:800;margin-bottom:40px}
+    .menu a{
+      display:block;
+      padding:12px 14px;
+      margin-bottom:10px;
+      border-radius:12px;
+      color:#94a3b8;
+      font-size:14px
+    }
+    .menu a.active,.menu a:hover{background:#1e293b;color:#fff}
+
+    /* Main */
+    .main{flex:1;padding:32px}
+    .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+    .topbar h1{font-size:28px}
+    .btn{background:#6366f1;border:none;color:#fff;padding:10px 18px;border-radius:12px;font-weight:600}
+
+    /* KPI Cards */
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:32px}
+    .card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid #1e293b;
+      padding:22px;
+      border-radius:20px;
+      backdrop-filter:blur(12px)
+    }
+    .card p{font-size:13px;color:#94a3b8}
+    .card h2{font-size:32px;font-weight:800;margin-top:6px}
+
+    /* Charts */
+    .charts{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+
+    .line-chart{height:260px;display:flex;align-items:flex-end;gap:10px}
+    .line-chart span{
+      flex:1;
+      background:linear-gradient(180deg,#6366f1,#a5b4fc);
+      border-radius:10px 10px 0 0;
+      animation:grow 2s ease forwards
+    }
+    .line-chart span:nth-child(1){height:30%}
+    .line-chart span:nth-child(2){height:45%}
+    .line-chart span:nth-child(3){height:70%}
+    .line-chart span:nth-child(4){height:60%}
+    .line-chart span:nth-child(5){height:85%}
+    .line-chart span:nth-child(6){height:75%}
+
+    @keyframes grow{from{height:0}}
+
+    .activity p{font-size:14px;color:#94a3b8;margin-bottom:12px}
+    .activity h3{font-size:22px;margin-bottom:16px}
+
+    /* Responsive */
+    @media(max-width:900px){
+      body{flex-direction:column}
+      .sidebar{width:100%;display:flex;justify-content:space-between;align-items:center}
+      .menu{display:flex;gap:10px}
+      .charts{grid-template-columns:1fr}
+    }
+  
+    /* Realistic UI Enhancements */
+    small{display:block;margin-top:6px;font-size:12px}
+    table tr{border-bottom:1px solid #1e293b}
+    table td,table th{padding:8px 0}
+    table tr:last-child{border-bottom:none}
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">InsightAI</div>
+    <nav class="menu">
+      <a class="active" href="#dashboard">Dashboard</a>
+      <a href="#analytics">Analytics</a>
+      <a href="#users">Users</a>
+      <a href="#revenue">Revenue</a>
+      <a href="#settings">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Dashboard -->
+    <section id="dashboard">
+      <div class="topbar"><h1>Analytics Overview</h1><button class="btn">Export</button></div>
+
+      <section class="kpis">
+        <div class="card"><p>Total Users</p><h2>12,840</h2><small style="color:#22c55e">▲ 8.2%</small></div>
+        <div class="card"><p>Active Sessions</p><h2>3,420</h2><small style="color:#22c55e">▲ 5.1%</small></div>
+        <div class="card"><p>Monthly Revenue</p><h2>$74,200</h2><small style="color:#22c55e">▲ 12.4%</small></div>
+        <div class="card"><p>Churn Rate</p><h2>2.1%</h2><small style="color:#ef4444">▼ 0.4%</small></div>
+      </section>
+
+      <section class="charts">
+        <div class="card"><p>Weekly Active Users</p><div class="line-chart"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        <div class="card activity"><p>Recent Activity</p><table style="width:100%"><tr><th>User</th><th>Action</th><th>Status</th></tr><tr><td>Arjun</td><td>Subscription</td><td style="color:#22c55e">Paid</td></tr><tr><td>Karthik</td><td>Trial</td><td style="color:#eab308">Trial</td></tr></table></div>
+      </section>
+    </section>
+
+    <!-- Analytics -->
+    <section id="analytics">
+      <div class="topbar"><h1>Advanced Analytics</h1></div>
+      <div class="kpis">
+        <div class="card"><p>Retention Rate</p><h2>68%</h2></div>
+        <div class="card"><p>Avg Session</p><h2>6m 24s</h2></div>
+      </div>
+    </section>
+
+    <!-- Users -->
+    <section id="users">
+      <div class="topbar"><h1>User Management</h1></div>
+      <div class="card"><table style="width:100%"><tr><th>Name</th><th>Email</th><th>Plan</th></tr><tr><td>Ananya</td><td>a@mail.com</td><td>Pro</td></tr><tr><td>Rahul</td><td>r@mail.com</td><td>Free</td></tr></table></div>
+    </section>
+
+    <!-- Revenue -->
+    <section id="revenue">
+      <div class="topbar"><h1>Revenue Breakdown</h1></div>
+      <div class="kpis">
+        <div class="card"><p>Subscriptions</p><h2>$52,000</h2></div>
+        <div class="card"><p>Add-ons</p><h2>$22,200</h2></div>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section id="settings">
+      <div class="topbar"><h1>Settings</h1></div>
+      <div class="card"><p>Account Email</p><h2>admin@insightai.com</h2><button class="btn" style="margin-top:12px">Change</button></div>
+    </section>
+
+  </main>
+
+</body>
+</html>
